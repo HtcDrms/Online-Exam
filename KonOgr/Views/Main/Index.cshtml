@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Liste";
+}
+
+@{
+    var id = ViewBag.id;
+    var baslik = ViewBag.baslik;
+    var tarih = ViewBag.tarih;
+    int count = Enumerable.Count(ViewBag.id);
+}
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-danger" asp-area="" asp-controller="Account" asp-action="Logout">LOGOUT</a>
+                </li>
+                </ul>
+        </div>
+        <h2>Sınav Listesi</h2>
+
+        <table class="table table-bordered" id="SinavListe">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>BAŞLIK</th>
+                    <th>TARİH</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i = 0; i < count; i++)
+                {
+                    <tr>
+                        <td>@id[i]</td>
+                        <td><a href="/Sinav/Sinav/@id[i]">@baslik[i]</a></td>
+                        <td>@tarih[i]</td>
+                        <td><button class="btn btn-danger SinavSil" data-id="@id[i]">Sil</button> </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+
